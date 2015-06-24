@@ -1,0 +1,13 @@
+---
+- name: make a build dir
+  file: state=directory name=/root/mongodb-dockerized
+
+- name: put Dockerfile
+  template: src=Dockerfile
+            dest=/root/mongodb-dockerized/Dockerfile
+
+- name: build a Docker image for MongoDB
+  command: docker build -t gitinsky/mongodb:0.1.0 --rm /root/mongodb-dockerized
+
+- name: tag it as latest
+  command: docker build -t gitinsky/mongodb:latest --rm /root/mongodb-dockerized
