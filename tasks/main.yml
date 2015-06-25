@@ -6,6 +6,10 @@
   template: src=Dockerfile
             dest=/root/mongodb-dockerized/Dockerfile
 
+- name: put start.sh
+  template: src=start.sh
+            dest=/root/mongodb-dockerized/start.sh mode=0755
+
 - name: build a Docker image for MongoDB
   command: docker build -t gitinsky/mongodb:0.1.0 --rm /root/mongodb-dockerized
 
